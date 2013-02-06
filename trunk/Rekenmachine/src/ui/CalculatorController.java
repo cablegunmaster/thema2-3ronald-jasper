@@ -5,6 +5,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Stack;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
@@ -51,6 +52,9 @@ public class CalculatorController extends JPanel implements ActionListener, KeyE
 	private JButton sevenButton = new JButton("7");
 	private JButton eightButton = new JButton("8");
 	private JButton nineButton = new JButton("9");
+
+	private Stack<String> operator;
+	private Stack<String> numbers;
 
 	// End of variables declaration
 
