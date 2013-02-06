@@ -130,6 +130,6 @@ public class TestRational
 		cm.setCalculatorResult(uitrekenen);
 		cm.calculate();
 		System.out.println(cm.getCalculatorResult());
-		assertTrue(cm.getCalculatorResult().equals("15"));
+		assertTrue(cm.getCalculatorResult().equals("15.0"));
 	}
 }

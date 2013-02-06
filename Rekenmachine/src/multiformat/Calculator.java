@@ -121,17 +121,29 @@ public class Calculator
 
 	public String operandToString(Rational rational)
 	{
+		System.out.println("Rational: " + rational.denominator + " "+ rational.numerator + "Base: " + base.getName());
 		return format.toString(rational, base);
 	}
 
 	public String getLastOperant()
 	{
-		return operandToString(rationalStack.pop());
+		return operandToString(rationalStack.peek());
 	}
 	
 	public String getLastOperantWithoutRemoval()
 	{
-		return operandToString(rationalStack.lastElement());
+		String value = null;
+		try{
+		value = operandToString(rationalStack.lastElement());
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return "0";
+		}
+		return value;
+	}
+	
+	public Stack<Rational> getStack(){
+		return rationalStack;
 	}
 
 	public void setBase(Base newBase)
@@ -157,5 +169,11 @@ public class Calculator
 	public void clearStack()
 	{
 		rationalStack.clear();
+		
+		rationalStack.add(new Rational());
+		rationalStack.add(new Rational());
+		
+		Rational op0 = rationalStack.pop();
+		Rational op1 = rationalStack.pop();
 	}
 }

@@ -314,6 +314,10 @@ public class CalculatorController extends JPanel implements ActionListener, KeyE
 			{
 				cm.calculate();
 			}
+			else if (c == '.'|| c == ',')
+			{
+				cm.addComma();
+			}
 
 			try
 			{

@@ -152,7 +152,6 @@ public class CalculatorModel
 		{
 			// String[] tmp1 = calculatorResult.split(" [-*+/] ");
 			String[] tmp1 = calculatorResult.split(" ");
-			int operants = 0;
 
 			for (int i = (tmp1.length - 1); i >= 0; i--)
 			{
@@ -193,7 +192,6 @@ public class CalculatorModel
 					{
 						calc.subtract();
 					}
-					operants++;
 				}
 			}
 			totalCalculations++;
@@ -203,6 +201,7 @@ public class CalculatorModel
 		else
 		{
 			calculatorResult = calc.getFormat().toString(EvaluateExpression.evaluateExpression(calculatorResult), calc.getBase());
+			System.out.println(calculatorResult);
 			processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
 		}
 	}
