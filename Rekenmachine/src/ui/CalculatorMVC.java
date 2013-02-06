@@ -18,7 +18,7 @@ public class CalculatorMVC extends JApplet
 	 */
 	public void init()
 	{
-		resize(251,290); // 238 without calculationsview
+		resize(280,290); // 238 without calculationsview
 		
 		new CalculatorMVC();
 
