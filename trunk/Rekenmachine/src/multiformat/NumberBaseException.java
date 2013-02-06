@@ -2,8 +2,9 @@ package multiformat;
 
 /**
  * 
- * @author Wouter Nijenhuis en Jasper Lankhorst
- * @version 1
+ * @author Jasper Lankhorst
+ * @author Ronald Kok
+ * @version 1.0
  *
  */
 @SuppressWarnings("serial")
