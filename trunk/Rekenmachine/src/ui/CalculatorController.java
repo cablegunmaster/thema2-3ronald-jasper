@@ -290,41 +290,41 @@ public class CalculatorController extends JPanel implements ActionListener, KeyE
 	{
 		switch (e.getID())
 		{
-		case KeyEvent.KEY_PRESSED:
-		{
-			char c = e.getKeyChar();
-			if (c == '(')
+			case KeyEvent.KEY_PRESSED:
 			{
-				//cm.addParenthesis(true);
+				char c = e.getKeyChar();
+				if (c == '(')
+				{
+					cm.addParenthesis(true);
+				}
+				else if (c == ')')
+				{
+					cm.addParenthesis(false);
+				}
+				else if (c == '+' || c == '-' || c == '*' || c == '/')
+				{
+					cm.useOperant(c + "");
+				}
+				else if (c == '\b')
+				{
+					cm.removeLastChar();
+				}
+				else if (c == '\n')
+				{
+					cm.calculate();
+				}
+	
+				try
+				{
+					int val = Integer.parseInt(c + "");
+					cm.changeNumber(val + "");
+				}
+				catch (NumberFormatException nfe)
+				{
+	
+				}
+				break;
 			}
-			else if (c == ')')
-			{
-				//cm.addParenthesis(false);
-			}
-			else if (c == '+' || c == '-' || c == '*' || c == '/')
-			{
-				cm.useOperant(c + "");
-			}
-			else if (c == '\b')
-			{
-				cm.removeLastChar();
-			}
-			else if (c == '\n')
-			{
-				cm.calculate();
-			}
-
-			try
-			{
-				int val = Integer.parseInt(c + "");
-				cm.changeNumber(val + "");
-			}
-			catch (NumberFormatException nfe)
-			{
-
-			}
-			break;
-		}
 		}
 		return false;
 	}

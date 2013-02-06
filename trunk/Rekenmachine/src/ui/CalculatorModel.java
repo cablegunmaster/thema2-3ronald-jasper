@@ -104,17 +104,17 @@ public class CalculatorModel
 		{
 			if (isNumeric(lastChar))
 			{
-				calculatorResult = "(" + calculatorResult;
+				calculatorResult = "( " + calculatorResult;
 			}
 			else
 			{
-				calculatorResult += "(";
+				calculatorResult += "( ";
 			}
 			parenthesisOpen = true;
 		}
 		else if (!left && parenthesisOpen && !lastChar.equals(" "))
 		{
-			calculatorResult += ")";
+			calculatorResult += " )";
 			parenthesisOpen = false;
 		}
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
@@ -126,6 +126,7 @@ public class CalculatorModel
 		calculatorResult = "0";
 		parenthesisOpen = false;
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
+		operants = 0;
 	}
 
 	public void removeLastChar()
@@ -146,6 +147,73 @@ public class CalculatorModel
 	 * This method will calculate
 	 */
 	public void calculate()
+	{
+		if (!calculatorResult.contains("("))
+		{
+			// String[] tmp1 = calculatorResult.split(" [-*+/] ");
+			String[] tmp1 = calculatorResult.split(" ");
+			int operants = 0;
+
+			for (int i = (tmp1.length - 1); i >= 0; i--)
+			{
+				String val = tmp1[i];
+				if (isNumeric(val))
+				{
+					try
+					{
+						calc.addOperand(val);
+					}
+					catch (FormatException e)
+					{
+						System.out.println("Wrong operand: " + e.getMessage());
+					}
+				}
+			}
+			
+			//
+			for (int i = 0; i < tmp1.length; i++)
+			{
+				String val = tmp1[i];
+				String operant = getOperantIfExist(val);
+				if (operant != null)
+				{
+					if (operant == "*")
+					{
+						calc.multiply();
+					}
+					else if (operant == "/")
+					{
+						calc.divide();
+					}
+					else if (operant == "+")
+					{
+						calc.add();
+					}
+					else if (operant == "-")
+					{
+						calc.subtract();
+					}
+					operants++;
+				}
+			}
+			totalCalculations++;
+			calculatorResult = calc.getLastOperantWithoutRemoval();
+			processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
+		}
+		else
+		{
+			String[] tmp1 = calculatorResult.split("\\(.+?\\)");
+			for (String val : tmp1)
+			{
+				System.out.println(val);
+			}
+		}
+	}
+	
+	/**
+	 * This method will calculate
+	 */
+	public void calculate2()
 	{
 		if (!calculatorResult.contains("("))
 		{
