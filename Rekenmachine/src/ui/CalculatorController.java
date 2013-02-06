@@ -15,7 +15,7 @@ import javax.swing.LayoutStyle;
 
 /**
  * 
- * @author Wouter Nijenhuis
+ * @author Ronald Kok
  * @author Jasper Lankhorst
  * 
  */

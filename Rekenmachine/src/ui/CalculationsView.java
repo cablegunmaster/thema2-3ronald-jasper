@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 /**
  * 
  * @author Jasper Lankhorst
- * @author Wouter Nijenhuis
+ * @author Ronald Kok
  * @version 1.0
  *
  */
