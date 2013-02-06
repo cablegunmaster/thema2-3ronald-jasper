@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle;
  * 
  * @author Ronald Kok
  * @author Jasper Lankhorst
+ * @version 1.0
  * 
  */
 @SuppressWarnings("serial")
