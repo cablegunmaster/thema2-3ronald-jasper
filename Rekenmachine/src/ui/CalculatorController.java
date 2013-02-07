@@ -196,6 +196,7 @@ public class CalculatorController extends JPanel implements ActionListener, KeyE
 		Object source = e.getSource();
 		if (source == ceButton)
 		{
+			cm.useFormat(formatBox.getSelectedItem().toString());
 			cm.clearCalculatorResult();
 		}
 		else if (source == backspaceButton)
