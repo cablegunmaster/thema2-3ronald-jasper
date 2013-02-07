@@ -160,7 +160,7 @@ public class CalculatorModel
 				if(Pattern.compile("[0-9]").matcher(val).find()){
 					try
 					{
-						System.out.println("1. controller: "+ calc.getBase().getName());
+						System.out.println("1. controller: "+ calc.getFormat().getName());
 						calc.addOperand(val);
 					}
 					catch (FormatException e)
@@ -231,6 +231,7 @@ public class CalculatorModel
 
 	public void useFormat(String format)
 	{
+		System.out.println("chosen format: " + format);
 		if (format == "Floating Point")
 		{
 			calc.setFormat(new FloatingPointFormat());
