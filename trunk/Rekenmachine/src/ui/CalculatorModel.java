@@ -3,6 +3,7 @@ package ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import multiformat.BinaryBase;
 import multiformat.Calculator;
@@ -123,7 +124,6 @@ public class CalculatorModel
 
 	public void clearCalculatorResult()
 	{
-		calc.clearStack();
 		calculatorResult = "0";
 		parenthesisOpen = false;
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
@@ -156,10 +156,11 @@ public class CalculatorModel
 			for (int i = (tmp1.length - 1); i >= 0; i--)
 			{
 				String val = tmp1[i];
-				if (isNumeric(val))
-				{
+				System.out.println(val);
+				if(Pattern.compile("[0-9]").matcher(val).find()){
 					try
 					{
+						System.out.println("1. controller: "+ calc.getBase().getName());
 						calc.addOperand(val);
 					}
 					catch (FormatException e)

@@ -30,6 +30,7 @@ public class FloatingPointFormat extends Format {
     }else{
       double power = Math.floor(Math.log(Math.abs(value))/Math.log(baseNum));
       double mantissa = Math.abs(value) / Math.pow(baseNum,power);
+      System.out.println(power + " " + mantissa);
       String result="";
       result = base.toString(mantissa) + "*10^" 
       			+ base.toString(power);

@@ -36,6 +36,7 @@ public class Calculator
 
 	public void addOperand(String newOperand) throws FormatException
 	{
+		System.out.println("2. Calculator basenaam: " +base.getName() + " Operand: " + newOperand );
 		rationalStack.add(format.parse(newOperand, base));
 	}
 
@@ -122,6 +123,7 @@ public class Calculator
 	public String operandToString(Rational rational)
 	{
 		System.out.println("Rational: " + rational.denominator + " "+ rational.numerator + "Base: " + base.getName());
+		System.out.println(this.getFormat());
 		return format.toString(rational, base);
 	}
 
@@ -137,7 +139,6 @@ public class Calculator
 		value = operandToString(rationalStack.lastElement());
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-			return "0";
 		}
 		return value;
 	}
@@ -168,12 +169,6 @@ public class Calculator
 	
 	public void clearStack()
 	{
-		rationalStack.clear();
-		
-		rationalStack.add(new Rational());
-		rationalStack.add(new Rational());
-		
-		Rational op0 = rationalStack.pop();
-		Rational op1 = rationalStack.pop();
+		rationalStack = new Stack<Rational>();
 	}
 }
