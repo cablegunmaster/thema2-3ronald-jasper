@@ -36,7 +36,7 @@ public class Calculator
 
 	public void addOperand(String newOperand) throws FormatException
 	{
-		System.out.println("2. Calculator basenaam: " +base.getName() + " Operand: " + newOperand );
+		System.out.println("2. Calculator basenaam: " +base.getName() + " Operand: " + newOperand + "Format: " + format );
 		rationalStack.add(format.parse(newOperand, base));
 	}
 
