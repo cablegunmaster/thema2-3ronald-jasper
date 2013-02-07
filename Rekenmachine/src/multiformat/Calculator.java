@@ -122,8 +122,8 @@ public class Calculator
 
 	public String operandToString(Rational rational)
 	{
-		System.out.println("Rational: " + rational.denominator + " "+ rational.numerator + "Base: " + base.getName());
-		System.out.println(this.getFormat());
+		//System.out.println("Rational: " + rational.denominator + " "+ rational.numerator + "Base: " + base.getName());
+		//System.out.println(this.getFormat());
 		return format.toString(rational, base);
 	}
 
@@ -138,7 +138,7 @@ public class Calculator
 		try{
 		value = operandToString(rationalStack.lastElement());
 		}catch(Exception e){
-			System.out.println(e.getMessage());
+			System.err.println(e.getMessage());
 		}
 		return value;
 	}

@@ -231,7 +231,7 @@ public class CalculatorModel
 
 	public void useFormat(String format)
 	{
-		System.out.println("chosen format: " + format);
+		//System.out.println("chosen format: " + format);
 		if (format == "Floating Point")
 		{
 			calc.setFormat(new FloatingPointFormat());

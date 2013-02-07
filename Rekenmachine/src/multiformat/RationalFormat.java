@@ -32,7 +32,7 @@ public class RationalFormat extends Format {
     int index = number.indexOf('/');
     if(index >= 0)
     {
-    	System.out.println("Getal: " + number + "Base: " + base.getName());
+    	//System.out.println("Getal: " + number + "Base: " + base.getName());
       return new Rational(base.parse(number.substring(0, index).trim()),
                    base.parse(number.substring(index+1).trim()));
     }else {
