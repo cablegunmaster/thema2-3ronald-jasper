@@ -33,17 +33,15 @@ public class FixedPointFormat extends Format
 		double value = (double) number.numerator / (double) number.denominator;
 		String result = base.toString(Math.abs(value));
 		if (result.equals("0"))
-			if(base.getName() == "dec" && !result.contains(".") ){
 			result += ".0";
-			}
 		if (value < 0)
 			result = "-" + result;
-		System.out.println(result);
 		return result;
 	}
 
 	public Rational parse(String number, Base base)
 	{
+		System.out.println("Nummer: " + number + "Base: " + base);
 		return new Rational(base.parse(number));
 	}
 }
