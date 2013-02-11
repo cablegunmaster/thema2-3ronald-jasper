@@ -3,7 +3,6 @@ package ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 import multiformat.BinaryBase;
 import multiformat.Calculator;
@@ -124,6 +123,7 @@ public class CalculatorModel
 
 	public void clearCalculatorResult()
 	{
+		calc.clearStack();
 		calculatorResult = "0";
 		parenthesisOpen = false;
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
@@ -148,6 +148,7 @@ public class CalculatorModel
 	 */
 	public void calculate()
 	{
+		System.out.println(calculatorResult);
 		if (!calculatorResult.contains("("))
 		{
 			// String[] tmp1 = calculatorResult.split(" [-*+/] ");
@@ -156,11 +157,10 @@ public class CalculatorModel
 			for (int i = (tmp1.length - 1); i >= 0; i--)
 			{
 				String val = tmp1[i];
-				System.out.println(val);
-				if(Pattern.compile("[0-9]").matcher(val).find()){
+				if (isNumeric(val))
+				{
 					try
 					{
-						System.out.println("1. controller: "+ calc.getFormat().getName());
 						calc.addOperand(val);
 					}
 					catch (FormatException e)
@@ -202,7 +202,6 @@ public class CalculatorModel
 		else
 		{
 			calculatorResult = calc.getFormat().toString(EvaluateExpression.evaluateExpression(calculatorResult), calc.getBase());
-			System.out.println(calculatorResult);
 			processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
 		}
 	}
@@ -211,6 +210,7 @@ public class CalculatorModel
 
 	public void useBase(String base)
 	{
+		System.out.println("Base: " + base);
 		if (base == "Dec")
 		{
 			calc.setBase(new DecimalBase());
@@ -227,11 +227,11 @@ public class CalculatorModel
 		{
 			calc.setBase(new BinaryBase());
 		}
+		//processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
 	}
 
 	public void useFormat(String format)
 	{
-		//System.out.println("chosen format: " + format);
 		if (format == "Floating Point")
 		{
 			calc.setFormat(new FloatingPointFormat());

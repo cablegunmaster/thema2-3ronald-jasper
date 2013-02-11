@@ -92,8 +92,10 @@ public abstract class Base
 			for (int i = 0; i < number.length(); i++)
 			{
 				char numberChar = number.charAt(i);
+				System.out.println("Numberchar: " + numberChar);
 				if (numberChar != '.')
 				{
+					
 					if(!isValidBaseChar(numberChar))
 						throw new NumberBaseException();
 					
