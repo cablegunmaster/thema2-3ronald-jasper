@@ -1,6 +1,9 @@
 import java.util.Enumeration;
 import javax.swing.tree.*;
 
+/**
+Default Mutable Tree node Test Application.
+**/
 public class DefaultMutableTreeNodeTestApplication
 {
 	private DefaultMutableTreeNode tree = new DefaultMutableTreeNode( "Person" );
